@@ -24,7 +24,8 @@ class SalesCommissionController extends Controller
             DB::raw('SUM(sales.grand_total) as omzet')
         )
         ->join('marketings', 'sales.marketing_id', '=', 'marketings.id')
-        ->groupBy('sales.marketing_id', 'month', 'marketings.name')
+        ->groupBy('month', 'marketings.name')
+        ->orderBy('month', 'desc')
         ->get()
         ->map(function ($row) use ($commissionRates) {
             foreach ($commissionRates as $rate) {
@@ -37,7 +38,8 @@ class SalesCommissionController extends Controller
             return $row;
         });
 
-        return response()->json($commissions);
+        // return response()->json($commissions);
+        return view('index', compact('commissions'));
     }
 
 

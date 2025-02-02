@@ -1,5 +1,7 @@
 <!-- Saat nanti clone project di komputer lain, lakukan ini setelah git clone: -->
 
+Buat Database/import file herca.sql 
+
 composer install
 cp .env.example .env
 php artisan key:generate
@@ -10,7 +12,7 @@ php artisan serve
 
 <!-- Lihat Komisi -->
 
-GET http://localhost:8000/commission
+GET http://localhost:8000/
 
 <!-- Lihat Pembayaran -->
 
